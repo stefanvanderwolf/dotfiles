@@ -12,6 +12,11 @@ if [ -n "$ZSH_DEBUG" ]; then
   zmodload zsh/zprof
 fi
 
+# autoloading {{{1
+FPATH="$HOME/git/dotfiles/zsh/functions:$FPATH"
+autoload -U $fpath[1]/*(.:t)
+# 1}}}
+
 # edit {{{1
 export EDITOR='nvim'
 export VISUAL='nvim'
