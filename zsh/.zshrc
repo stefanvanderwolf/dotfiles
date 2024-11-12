@@ -12,6 +12,13 @@ if [ -n "$ZSH_DEBUG" ]; then
   zmodload zsh/zprof
 fi
 
+# edit {{{1
+export EDITOR='nvim'
+export VISUAL='nvim'
+alias -g vi='nvim'
+alias -g vim='nvim'
+# 1}}}
+
 # history {{{1
 export HISTSIZE=500
 export SAVEHIST=20000
