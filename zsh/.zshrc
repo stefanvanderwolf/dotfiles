@@ -19,6 +19,10 @@ alias -g vi='nvim'
 alias -g vim='nvim'
 # 1}}}
 
+# ls {{{1
+alias -g la='ls -la'
+# 1}}}
+
 # history {{{1
 export HISTSIZE=500
 export SAVEHIST=20000
