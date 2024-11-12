@@ -14,9 +14,15 @@ if [ "$#" -eq 0 ]; then
 
   # List all the files that are hidden from git. I will still notice them, but
   # won't commit them easily.
-  if hidden=$(git ls-files -v | grep '^[[:lower:]]'); then
+  if hidden=$(g hidden); then
     printf '%s' "$hidden" | xargs -n 2 printf ' \033[38;5;8m%s %s\033[0m\n' 
   fi
+elif [ "$1" = 'hide' ]; then
+  shift; git update-index --assume-unchanged "$@"
+elif [ "$1" = 'track' ]; then
+  shift; git update-index --no-assume-unchanged "$@"
+elif [ "$1" = 'hidden' ]; then
+  git ls-files -v | grep "^[[:lower:]]"
 else
   git "$@"
 fi
