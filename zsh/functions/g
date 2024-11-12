@@ -17,4 +17,6 @@ if [ "$#" -eq 0 ]; then
   if hidden=$(git ls-files -v | grep '^[[:lower:]]'); then
     printf '%s' "$hidden" | xargs -n 2 printf ' \033[38;5;8m%s %s\033[0m\n' 
   fi
+else
+  git "$@"
 fi
