@@ -32,8 +32,10 @@ alias -g la='ls -la'
 export HISTSIZE=500
 export SAVEHIST=20000
 export HISTFILE="$XDG_CACHE_HOME/zsh/history"
+export HISTORY_IGNORE="vi *|cd ~|g add*"
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
 setopt SHARE_HISTORY
 # 1}}}
 
