@@ -39,6 +39,32 @@ setopt HIST_SAVE_NO_DUPS
 setopt SHARE_HISTORY
 # 1}}}
 
+# fzf {{{1
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:#000000
+  --color=fg+:#000000
+  --color=bg:#ffffff
+  --color=bg+:#ffffff
+  --color=hl:#8000f0
+  --color=hl+:#800080
+  --color=info:#800080
+  --color=marker:#800080
+  --color=prompt:#800080
+  --color=spinner:#000000
+  --color=pointer:#000000
+  --color=header:#000000
+  --color=border:#000000
+  --color=label:#aeaeae
+  --color=query:#000000
+  --border="none"
+  --preview-window="border-rounded"
+  --prompt="> "
+  --marker=">"
+  --pointer="◆"
+  --scrollbar="│"
+  --bind="ctrl-c:abort"'
+# 1}}}
+
 # Should be the last statement to get complete profiling.
 if [ -n "$ZSH_DEBUG" ]; then
   zprof
