@@ -32,6 +32,61 @@ elif [ "$1" = 'track' ]; then
   shift; git update-index --no-assume-unchanged "$@"
 elif [ "$1" = 'hidden' ]; then
   shift; git ls-files -v | grep "^[[:lower:]]"
+elif [ "$1" = 'branch' ] && [ "$2" = 'ownership' ]; then
+  # usage:
+  #   git branch ownership ref/heads
+  #   git branch ownership ref/remotes
+  #   git branch ownership --merged HEAD
+  #   git branch ownership --merged master
+  #   git branch ownership --no-merged master
+
+  shift; shift;
+
+  refs=$(git for-each-ref \
+    --sort 'committerdate' --sort 'authorname' \
+    --exclude 'refs/remotes/origin/HEAD' \
+    --exclude 'refs/remotes/origin/master' \
+    --exclude 'refs/remotes/origin/develop' \
+    --format="%(authorname) %(authoremail)|%(refname:short), last commit: %(committerdate:relative)" \
+    "$@")
+  count=$(print "$refs" | wc -l | xargs)
+
+  current_author=''
+  current_author_count=0
+  current_count=0
+  if [ "$refs" != '' ]; then
+    print "$refs" | while IFS="|" read -r author ref; do
+      if [ "$current_author" = '' ]; then
+        current_author="$author"
+      fi
+
+      if [ "$current_author" = "$author" ]; then
+        current_author_count=$(( current_author_count + 1 ))
+      fi
+
+      if [ "$current_author" != "$author" ]; then
+        printf "$BOLD%s$RESET (%s)\n" "$current_author" "$current_author_count"
+
+        current_author="$author"
+        current_author_count=1
+
+        if [ "$count" != "$current_count" ]; then
+          printf '\n'
+        fi
+      fi
+
+      printf '> %s\n' "$ref"
+
+      current_count=$(( current_count + 1 ))
+
+      if [ "$count" = "$current_count" ]; then
+        printf "$BOLD%s$RESET (%s)\n" "$current_author" "$current_author_count"
+      fi
+    done
+
+    printf '\n'
+    printf "${BOLD}total${RESET} (%s)\n" "$count"
+  fi
 else
   git "$@"
 fi
