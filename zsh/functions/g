@@ -31,7 +31,7 @@ elif [ "$1" = 'hide' ]; then
 elif [ "$1" = 'track' ]; then
   shift; git update-index --no-assume-unchanged "$@"
 elif [ "$1" = 'hidden' ]; then
-  git ls-files -v | grep "^[[:lower:]]"
+  shift; git ls-files -v | grep "^[[:lower:]]"
 else
   git "$@"
 fi
