@@ -76,6 +76,15 @@ compdef g=git
 compdef gg=git
 # 1}}}
 
+# jobs {{{1
+last_job_to_foreground() {
+    zle -I
+    fg
+}
+zle -N last_job_to_foreground
+bindkey '^f' last_job_to_foreground
+# 1}}}
+
 # Should be the last statement to get complete profiling.
 if [ -n "$ZSH_DEBUG" ]; then
   zprof
