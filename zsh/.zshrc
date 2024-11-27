@@ -65,6 +65,17 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --bind="ctrl-c:abort"'
 # 1}}}
 
+# completion {{{1
+setopt globdots
+
+autoload -Uz compinit
+
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+
+compdef g=git
+compdef gg=git
+# 1}}}
+
 # Should be the last statement to get complete profiling.
 if [ -n "$ZSH_DEBUG" ]; then
   zprof
