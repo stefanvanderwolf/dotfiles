@@ -62,6 +62,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --marker=">"
   --pointer="◆"
   --scrollbar="│"
+  --bind="ctrl-a:toggle-all"
   --bind="ctrl-c:abort"'
 # 1}}}
 
