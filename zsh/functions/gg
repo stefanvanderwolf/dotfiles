@@ -4,7 +4,7 @@
 # Utility tool for my way of working with git.
 #
 
-if [ "$#" -ne 0 ]; then
+if [ "$#" -eq 0 ]; then
   git log --decorate --oneline --graph 
 else
   git log --decorate --oneline --graph "$@"
