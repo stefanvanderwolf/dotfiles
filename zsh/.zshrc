@@ -40,6 +40,26 @@ setopt SHARE_HISTORY
 
 bindkey '^p' up-line-or-search
 bindkey  '^n' down-line-or-search
+
+fzf_history() {
+  local -ra items=($(fc -rl 0 |\
+                      fzf\
+                          --height='25%'\
+                          --no-multi\
+                          --prompt='history> '\
+                          --tiebreak='index'))
+  local -ri exit_status_code=$?
+
+  if [[ ${#items[@]} -ne 0 ]]; then
+    zle vi-fetch-history -n $items[1]
+  fi
+
+  zle reset-prompt
+
+  return exit_status_code
+}
+zle -N fzf_history
+bindkey '^r' fzf_history
 # 1}}}
 
 # fzf {{{1
