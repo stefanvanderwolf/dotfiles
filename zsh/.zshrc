@@ -37,6 +37,9 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt SHARE_HISTORY
+
+bindkey '^p' up-line-or-search
+bindkey  '^n' down-line-or-search
 # 1}}}
 
 # fzf {{{1
