@@ -9,6 +9,8 @@
 if [ -n "$ZSH_DEBUG" ]; then
   [ -n "$XDG_CACHE_HOME" ] || \
     (>&2 printf 'Null pointer exception on XDG_CACHE_HOME\n' && exit)
+  [ -n "$XDG_CONFIG_HOME" ] || \
+    (>&2 printf 'Null pointer exception on XDG_CONFIG_HOME\n' && exit)
 
   zmodload zsh/zprof
 fi
@@ -17,6 +19,16 @@ fi
 # autoloading {{{1
 FPATH="$HOME/git/dotfiles/zsh/functions:$FPATH"
 autoload -U $fpath[1]/*(.:t)
+# 1}}}
+
+# less {{{1
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export LESSHISTSIZE=500
+# 1}}}
+
+# npm {{{1
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 # 1}}}
 
 # edit {{{1
