@@ -1,3 +1,4 @@
+# performance {{{1
 # Load the profiling mod to debugging startup times.
 #
 # @usage:
@@ -11,6 +12,7 @@ if [ -n "$ZSH_DEBUG" ]; then
 
   zmodload zsh/zprof
 fi
+# 1}}}
 
 # autoloading {{{1
 FPATH="$HOME/git/dotfiles/zsh/functions:$FPATH"
@@ -109,6 +111,7 @@ zle -N last_job_to_foreground
 bindkey '^f' last_job_to_foreground
 # 1}}}
 
+# performance {{{1
 # Should be the last statement to get complete profiling.
 if [ -n "$ZSH_DEBUG" ]; then
   zprof
@@ -117,5 +120,6 @@ if [ -n "$ZSH_DEBUG" ]; then
   # directory doesn't exists just create it.
   [ -d "${HISTFILE%/*}" ] || mkdir -vp "${HISTFILE%/*}"
 fi
+# 1 }}}
 
 # vim: foldmethod=marker foldlevel=0
