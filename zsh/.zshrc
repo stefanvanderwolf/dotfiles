@@ -127,6 +127,11 @@ zle -N last_job_to_foreground
 bindkey '^f' last_job_to_foreground
 # 1}}}
 
+# prompt {{{1
+export PROMPT='%n@%m: %B%3~% %b> '
+export RPROMPT='%(?. .%F{red}%?)%f %*'
+# 1}}}
+
 # performance {{{1
 # Should be the last statement to get complete profiling.
 if [ -n "$ZSH_DEBUG" ]; then
