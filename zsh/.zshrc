@@ -36,6 +36,10 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 alias -g vi='nvim'
 alias -g vim='nvim'
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
 # 1}}}
 
 # ls {{{1
