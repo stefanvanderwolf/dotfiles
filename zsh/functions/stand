@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+#
+# Utility tool to for my stand goals
+#
+
+if [ "$#" = 0 ]; then
+  printf 'Missing argument time, like 1h\n' >&2
+  return 128
+fi
+
+(sleep "$1" \
+  && osascript \
+      -e "on run(argv)" \
+      -e "  return display notification item 1 of argv with title \"Sit\"" \
+      -e "end" \
+      -- "Stand $1 done"
+) &!
