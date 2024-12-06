@@ -1,0 +1,45 @@
+#!/bin/zsh
+
+#
+# Utility tool for my way of working with taskwarrior.
+#
+
+if [ "$#" -eq 0 ]; then
+  task
+elif [ "$1" = 'aoc' ]; then
+  shift;
+  default_year=$(date +%Y)
+  default_day=$(date +%-d)
+  printf 'Year (%s): ' "$default_year"
+  read -r input_year
+  printf 'Day (%s): ' "$default_day"
+  read -r input_day
+  printf 'Name: '
+  read -r name
+  year=${input_year:-$default_year}
+  day=${input_day:-$default_day}
+
+  task add "project:advent-of-code.$year.$day" "Solve day $day: $name" due:today+23h
+  task add "project:advent-of-code.$year.$day.p1" 'Solve part 1' due:today+23h
+  task add "project:advent-of-code.$year.$day.p2" 'Solve part 2' due:today+23h
+  task "project:advent-of-code.$year.$day"
+elif [ "$1" = 'cleanup' ]; then
+  shift;
+  while read -r line; do
+    uuid=$(printf '%s' "$line" | jq --exit-status --raw-output '.uuid')
+    description=$(printf '%s' "$line" | jq --exit-status --raw-output '.description')
+
+    printf 'Cleanup %s [y,n]? ' "$description"
+    read -u 2 -r yn
+    case $yn in
+      y)
+        task "$uuid" delete 'rc.confirmation=off' 'rc.verbose=nothing'
+        task "$uuid" purge 'rc.confirmation=off' 'rc.verbose=nothing'
+        ;;
+    esac
+  done << EOF
+  $(task "$@" export 'rc.json.array=off' 'rc.verbose=nothing')
+EOF
+else
+  task "$@"
+fi
