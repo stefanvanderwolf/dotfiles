@@ -5,7 +5,7 @@
 #
 
 if [ "$#" -eq 0 ]; then
-  git log --decorate --oneline --graph 
+  git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches --topo-order
 else
-  git log --decorate --oneline --graph "$@"
+  git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches --topo-order "$@"
 fi
