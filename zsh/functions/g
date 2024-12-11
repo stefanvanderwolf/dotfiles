@@ -33,14 +33,19 @@ elif [ "$1" = 'track' ]; then
 elif [ "$1" = 'hidden' ]; then
   shift; git ls-files -v | grep "^[[:lower:]]"
 elif [ "$1" = 'branch' ] && [ "$2" = 'ownership' ]; then
-  # usage:
-  #   git branch ownership ref/heads
-  #   git branch ownership ref/remotes
-  #   git branch ownership --merged HEAD
-  #   git branch ownership --merged master
-  #   git branch ownership --no-merged master
 
   shift; shift;
+
+  if [ "$1" = '-h' ]; then
+    printf 'g branch ownership [options]\n'
+    printf 'usage:\n'
+    printf '  git branch ownership ref/heads\n'
+    printf '  git branch ownership ref/remotes\n'
+    printf '  git branch ownership --merged HEAD\n'
+    printf '  git branch ownership --merged master\n'
+    printf '  git branch ownership --no-merged master\n'
+    return
+  fi
 
   refs=$(git for-each-ref \
     --sort 'committerdate' --sort 'authorname' \
