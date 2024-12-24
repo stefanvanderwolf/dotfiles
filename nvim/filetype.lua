@@ -13,3 +13,9 @@ vim.filetype.add({
     plist = "xml"
   }
 })
+
+vim.filetype.add({
+  extension = {
+    http = "http"
+  }
+})
