@@ -39,11 +39,11 @@ elif [ "$1" = 'branch' ] && [ "$2" = 'ownership' ]; then
   if [ "$1" = '-h' ]; then
     printf 'g branch ownership [options]\n'
     printf 'usage:\n'
-    printf '  git branch ownership ref/heads\n'
-    printf '  git branch ownership ref/remotes\n'
-    printf '  git branch ownership --merged HEAD\n'
-    printf '  git branch ownership --merged master\n'
-    printf '  git branch ownership --no-merged master\n'
+    printf '  g branch ownership ref/heads\n'
+    printf '  g branch ownership ref/remotes\n'
+    printf '  g branch ownership --merged HEAD\n'
+    printf '  g branch ownership --merged master\n'
+    printf '  g branch ownership --no-merged master\n'
     return
   fi
 
