@@ -1,0 +1,18 @@
+command = zsh --login --interactive
+
+theme = zenwritten_light
+background = ffffff
+
+adjust-cell-height = 2
+adjust-cell-width = -1
+
+font-size = 14
+font-feature = "-calt"
+font-feature = "-liga"
+font-feature = "-dlig"
+font-family = "CommitMono"
+font-style = "200Regular"
+font-family-italic = "CommitMono"
+font-style-italic = "200Italic"
+font-style-bold = "400Regular"
+font-style-bold-italic = "400Italic"
