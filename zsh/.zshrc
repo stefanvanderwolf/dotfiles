@@ -11,13 +11,15 @@ if [ -n "$ZSH_DEBUG" ]; then
     (>&2 printf 'Null pointer exception on XDG_CACHE_HOME\n' && exit)
   [ -n "$XDG_CONFIG_HOME" ] || \
     (>&2 printf 'Null pointer exception on XDG_CONFIG_HOME\n' && exit)
+  [ -n "$XDG_GIT_HOME" ] || \
+    (>&2 printf 'Null pointer exception on XDG_GIT_HOME\n' && exit)
 
   zmodload zsh/zprof
 fi
 # 1}}}
 
 # autoloading {{{1
-FPATH="$HOME/git/dotfiles/zsh/functions:$FPATH"
+FPATH="$XDG_GIT_HOME/dotfiles/zsh/functions:$FPATH"
 autoload -U $fpath[1]/*(.:t)
 # 1}}}
 
