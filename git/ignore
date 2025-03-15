@@ -1,1 +1,4 @@
 .DS_Store
+
+# A directory for storing hidden debug tools for personal use in projects.
+__debug__
