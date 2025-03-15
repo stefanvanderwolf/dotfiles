@@ -1,4 +1,25 @@
 [user]
   name = Stefan van der Wolf
 [pull]
-    ff = only
+  ff = only
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[init]
+  defaultBranch = main
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+[commit]
+  verbose = true
+[merge]
+  conflictstyle = zdiff3
