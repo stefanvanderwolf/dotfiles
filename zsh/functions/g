@@ -26,6 +26,10 @@ if [ "$#" -eq 0 ]; then
   if hidden=$(g hidden); then
     printf '%s' "$hidden" | xargs -n 2 printf " $HIDDEN%s %s$RESET\n"
   fi
+elif [ "$1" = 'f' ]; then
+  shift; git push --force-with-lease
+elif [ "$1" = 'd' ]; then
+  shift; git diff
 elif [ "$1" = 'hide' ]; then
   shift; git update-index --assume-unchanged "$@"
 elif [ "$1" = 'track' ]; then
