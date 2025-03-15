@@ -134,6 +134,10 @@ export PROMPT='%n@%m: %B%3~% %b> '
 export RPROMPT='%(?. .%F{red}%?)%f %*'
 # 1}}}
 
+# script {{{1
+alias -g @silent='>/dev/null 2>&1'
+# 1}}}
+
 # performance {{{1
 # Should be the last statement to get complete profiling.
 if [ -n "$ZSH_DEBUG" ]; then
