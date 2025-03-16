@@ -16,4 +16,9 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 export HOMEBREW_NO_INSTALL_UPGRADE=1
 # }}}
 
+# asdf {{{1
+export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+export PATH="${ASDF_DATA_DIR}/shims:$PATH"
+# 1}}}
+
 # vim: foldmethod=marker foldlevel=0
