@@ -28,6 +28,10 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export LESSHISTSIZE=500
 # 1}}}
 
+# node {{{1
+export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node-repl-history"
+# 1}}}
+
 # npm {{{1
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
