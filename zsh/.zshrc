@@ -122,6 +122,7 @@ compdef gg=git
 
 # jobs {{{1
 last_job_to_foreground() {
+    [ -z "$(jobs)" ] && return
     zle -I
     fg
 }
